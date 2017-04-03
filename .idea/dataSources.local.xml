@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails library: development" uuid="3047ac4d-d7c0-422c-afb4-1e7fbfbbb6e5">
+      <user-name>library</user-name>
+      <user-password>dfc6dfc3dfc8dfd8dfcbdfd8dfd3</user-password>
+      <schema-pattern>library_dev.pg_catalog library_dev.public</schema-pattern>
+      <default-schemas>library_dev.pg_catalog library_dev.public</default-schemas>
+    </data-source>
+    <data-source name="Rails library: test" uuid="92fed31c-787f-4117-aa24-b4197b5f66da">
+      <schema-pattern>library_test.*</schema-pattern>
+      <default-schemas>library_test.*</default-schemas>
+    </data-source>
+    <data-source name="Rails library: production" uuid="f26a9df5-83de-4acb-ab64-838db1d063d3">
+      <first-sync>true</first-sync>
+      <user-name>library</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe6dfe3dfe8dff8dfebdff8dff3dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+  </component>
+</project>
