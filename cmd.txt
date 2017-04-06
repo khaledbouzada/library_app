@@ -2,6 +2,65 @@ createuser --createdb --login -P library
 createdb library_dev -O library (-O = owner)
 createdb library_test -O library (-O = owner)
 
+rails new library_app -T
+The -T option skips creation of the default test files.
+
+add testing Rspec and Capybara gems to Gemfile
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
+then do:
+bundle install
+
+shoulda-matchers
+shoulda-matchers make testing common Rails functionality much faster and easier.
+You can write identical tests in rspec all by itself, but with shoulda-matcher these common tests are reduced to one line.
+To set this up, you paste the following to your spec/rails_helper.rb file:
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+The tests you write with shoulda-matcher get executed when you run your rspec tests.
+
+capybara
+capybara tests the totality of your application’s functionality by simulating how a real-world agent
+actually interacts with your app.
+First, paste the following into your spec/rails_helper.rb file:
+
+require 'capybara/rails'
+
+Now, paste the following into your spec/spec_helper.rb file:
+
+require 'capybara/rspec'
+
+
+factory_girl_rails
+This provides a nice way to spoof the models you create in your application.
+To use it, you need to add a couple of things to your spec/spec_helper.rb file.
+First, paste the following requirement:
+
+require 'factory_girl_rails'
+
+Then, add the following to the RSpec.configure block:
+
+# RSpec
+RSpec.configure do |config|
+  # ...
+
+  config.include FactoryGirl::Syntax::Methods
+  # ...
+end
+
+
 - gem 'devise'
 rails generate devise:install
 rails generate devise user
@@ -17,3 +76,6 @@ insert into app/assets/stylesheets/application.scss
 Require Bootstrap Javascripts in app/assets/javascripts/application.js
 //= require jquery
 //= require bootstrap-sprockets
+
+rails generate scaffold Book title:string published_at:datetime user_id:integer author_id:integer --skip migration
+rails generate scaffold Author first_name:string last_name:string

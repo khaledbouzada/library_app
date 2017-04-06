@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :authors
+  resources :books
+  devise_for :users, :controllers => { registrations: 'registrations' }
   root 'dashboard#index'
 end

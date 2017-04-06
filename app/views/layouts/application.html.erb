@@ -9,9 +9,55 @@
 </head>
 
 <body class="container">
-<p class="notice"><%= notice %></p>
 
-<p class="alert"><%= alert %></p>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div style="font-size: 16px;">
+    <div class="collapse navbar-collapse" id="">
+      <ul class="nav navbar-nav">
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" style="margin: 0 66px;">
+        <li>
+        </li>
+        <li class="dropdown" style="margin: 0 6px;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language<b class="caret"></b></a>
+          <ul class="dropdown-menu language-select">
+            <li><a href="#">English</a></li>
+          </ul>
+        </li>
+        <% if user_signed_in? %>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete', class: "btn btn-primary" %></li>
+        <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %></li>
+            <li><%= link_to '', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div style="margin-top: 85px;">
+
+<% if notice.present? %>
+    <aside class="alert alert-info">
+      <%= notice %>
+    </aside>
+      <script>
+          $('aside').fadeOut(5000);
+      </script>
+<% end %>
+<% if alert.present? %>
+    <aside class="alert alert-danger">
+      <%= alert %>
+    </aside>
+      <script>
+          $('aside').fadeOut(5000);
+      </script>
+<% end %>
 <%= yield %>
+</div>
 </body>
 </html>
